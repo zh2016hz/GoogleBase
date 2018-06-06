@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.xiaoniu.finance.googlemark.fragment.ALiFragement;
@@ -34,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentPagerAdapter  mFragmentPagerAdapter =  new FragmentPagerAdapter(getSupportFragmentManager()) {
 
+        public static final String TAG = "getItem" ;
         private Fragment mFragment;
 
         @Override
         public Fragment getItem(int position) {
+            Log.e(TAG, "getItem: " + position );
             switch (position){
                 case 0:
                     mFragment = new TecentFragement();

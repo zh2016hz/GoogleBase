@@ -67,6 +67,12 @@ public abstract class LoadView extends FrameLayout {
      *  加载数据
      */
     public void loadData() {
+        //当这次请求正在执行或者这个页面的请求已经完成了
+        //下面的请求不生效，本以为在getItem 哪里重复调用，但是系统帮我们做了缓存，发现在new LoadView 这里多次调用
+        if(currentState == 2  || currentState == 4 ){
+            return;
+        }
+        //进行请求时，显示loading
         currentState = 2;
         checkStatus();
         new Thread(new Runnable() {
